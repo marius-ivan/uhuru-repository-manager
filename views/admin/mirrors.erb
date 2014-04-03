@@ -26,10 +26,10 @@
     </fieldset>
 
   <% if selected_mirror %>
-      <%= erb :'admin/forms/edit_mirrors', :locals => {:selected_mirror => selected_mirror, :mirrors => mirrors, :error_message => defined?(error_message) ? error_message : nil } %>
+      <%= erb :'admin/forms/edit_mirrors', :locals => {:selected_mirror => selected_mirror, :mirrors => mirrors, :error_message => defined?(error_message) ? error_message : nil, :data => defined?(data) ? data : nil } %>
   <% end %>
 
   <% if defined?(new_mirror) %>
-      <%= erb :'admin/forms/add_mirror', :locals => {:error_message => defined?(error_message) ? error_message : nil} %>
+      <%= erb :'admin/forms/add_mirror', :locals => {:error_message => defined?(error_message) ? error_message : nil, :data => defined?(data) ? data : nil } %>
   <% end %>
 </div>

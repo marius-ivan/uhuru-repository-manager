@@ -26,10 +26,10 @@
     </fieldset>
 
   <% if selected_user %>
-      <%= erb :'admin/forms/edit_users', :locals => {:selected_user => selected_user, :users => users, :error_message => defined?(error_message) ? error_message : nil, :countries => defined?(countries) ? countries : nil } %>
+      <%= erb :'admin/forms/edit_users', :locals => {:selected_user => selected_user, :users => users, :error_message => defined?(error_message) ? error_message : nil, :countries => defined?(countries) ? countries : nil, :data => defined?(data) ? data : nil } %>
   <% end %>
 
   <% if defined?(new_user) %>
-      <%= erb :'admin/forms/add_user', :locals => {:error_message => defined?(error_message) ? error_message : nil, :countries => defined?(countries) ? countries : nil} %>
+      <%= erb :'admin/forms/add_user', :locals => {:error_message => defined?(error_message) ? error_message : nil, :countries => defined?(countries) ? countries : nil, :data => defined?(data) ? data : nil } %>
   <% end %>
 </div>

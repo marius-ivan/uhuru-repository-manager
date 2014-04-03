@@ -85,6 +85,7 @@ module Uhuru
             Uhuru::RepositoryManager::Model::Mirrors.update(mirror, hash)
           rescue Exception => ex
             error_message = Uhuru::RepositoryManager::Error.new('Edit mirror: ', ex.message)
+            data = hash
             $logger.error("Edit mirror : #{ex.message} - #{ex.backtrace}")
           end
 
@@ -94,6 +95,7 @@ module Uhuru
             layout :'layouts/layout'
             var :mirrors, mirrors
             var :selected_mirror, mirror.id
+            var :data, data || nil
             var :error_message, error_message || nil
           end
         end
@@ -106,6 +108,7 @@ module Uhuru
             Uhuru::RepositoryManager::Model::Mirrors.create(params[:mirror_name], params[:description], params[:hostname], params[:status] == 'true' ? true : false)
           rescue Exception => ex
             error_message = Uhuru::RepositoryManager::Error.new('Add mirror: ', ex.message)
+            data = { :name => params[:mirror_name], :description => params[:description], :hostname => params[:hostname], :status => params[:status] }
             $logger.error("Add mirror :#{ex.message} - #{ex.backtrace}")
           end
 
@@ -115,6 +118,7 @@ module Uhuru
             layout :'layouts/layout'
             var :mirrors, mirrors
             var :selected_mirror, nil
+            var :data, data || nil
             var :error_message, error_message || nil
             var :new_mirror, :new_mirror
           end

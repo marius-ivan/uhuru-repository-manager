@@ -1,18 +1,26 @@
 <fieldset class="details">
   <legend>New mirror</legend>
   <form method="post" action="<%= Uhuru::RepositoryManager::ADD_MIRROR %>">
-    <div><label for="mirror_name">Mirror</label>              <input name="mirror_name" type="text" id="mirror_name" value=""></div>
-    <div><label for="hostname">Hostname</label>               <input name="hostname" type="text" id="hostname" value=""></div>
+    <div><label for="mirror_name">Mirror</label>              <input name="mirror_name" type="text" id="mirror_name" value="<%= defined?(data[:name]) ? data[:name] : '' %>"></div>
+    <div><label for="hostname">Hostname</label>               <input name="hostname" type="text" id="hostname" value="<%= defined?(data[:hostname]) ? data[:hostname] : '' %>"></div>
     <div><label for="status">Status</label>
       <select name="status" id="status">
-        <option value="true">Online</option>
-        <option value="false">Offline</option>
+        <% if defined?(data[:status]) %>
+            <% if data[:status] == true || data[:status] == 'true' %>
+                <option value="true">Online</option>
+            <% else %>
+                <option value="false">Offline</option>
+            <% end %>
+        <% else %>
+            <option value="true">Online</option>
+            <option value="false">Offline</option>
+        <% end %>
       </select>
     </div>
 
     <div>
       <label for="description">Description</label>
-      <textarea name="description" id="description"></textarea>
+      <textarea name="description" id="description"><%= defined?(data[:description]) ? data[:description] : '' %></textarea>
     </div>
 
     <div class="clear-height-10px"></div>

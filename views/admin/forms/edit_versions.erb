@@ -128,7 +128,7 @@
   <% end %>
 
   <% if defined?(new_version) %>
-      <%= erb :'admin/forms/add_version', :locals => { :selected_product => selected_product.to_s, :error_message => defined?(error_message) ? error_message : nil, :products => products } %>
+      <%= erb :'admin/forms/add_version', :locals => { :selected_product => selected_product.to_s, :error_message => defined?(error_message) ? error_message : nil, :products => products, :data => defined?(data) ? data : nil } %>
   <% end %>
 
   <!-- if there is an error, the error if from the version details panel  -->

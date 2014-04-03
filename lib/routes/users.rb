@@ -94,6 +94,7 @@ module Uhuru
                     :organization => params[:organization],
                     :active => params[:is_active] == 'on' ? true : false,
                     :admin => params[:is_admin] == 'on' ? true : false,
+                    :country => params[:country],
                     :city => params[:city],
                     :address => params[:address],
                     :phone => params[:phone]
@@ -106,6 +107,7 @@ module Uhuru
               raise validated_user_data
             rescue Exception => ex
               error_message = Uhuru::RepositoryManager::Error.new('Edit user: ', ex.message)
+              data = hash
               $logger.error("Edit user : #{ex.message} - #{ex.backtrace}")
             end
           end
@@ -117,6 +119,7 @@ module Uhuru
             var :users, users
             var :selected_user, user.first.id
             var :countries, countries
+            var :data, data || nil
             var :error_message, error_message || nil
           end
         end
@@ -143,6 +146,18 @@ module Uhuru
               end
             rescue Exception => ex
               error_message = Uhuru::RepositoryManager::Error.new('Add user: ', ex.message)
+              data = {
+                  :username => params[:username],
+                  :first_name => params[:first_name],
+                  :last_name => params[:last_name],
+                  :organization => params[:organization],
+                  :job_title => params[:job_title],
+                  :country => params[:country],
+                  :city => params[:city],
+                  :address => params[:address],
+                  :phone => params[:phone],
+                  :admin => params[:admin]
+              }
               $logger.error("Add user : #{ex.message} - #{ex.backtrace}")
             end
           end
@@ -153,6 +168,7 @@ module Uhuru
             layout :'layouts/layout'
             var :users, users
             var :selected_user, nil
+            var :data, data || nil
             var :error_message, error_message || nil
             var :countries, countries
             var :new_user, :new_user

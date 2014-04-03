@@ -85,11 +85,11 @@
 
   <% if selected_product %>
       <% product = products.find{|product| product.id.to_s == selected_product.to_s} %>
-      <%= erb :'admin/forms/edit_product', :locals => {:selected_product => selected_product, :product => product, :versions => versions, :error_message => defined?(error_message) ? error_message : nil } %>
+      <%= erb :'admin/forms/edit_product', :locals => {:selected_product => selected_product, :product => product, :versions => versions, :error_message => defined?(error_message) ? error_message : nil, :data => defined?(data) ? data : nil } %>
   <% end %>
 
   <% if defined?(new_product) %>
-      <%= erb :'admin/forms/add_product', :locals => {:selected_product => selected_product, :error_message => defined?(error_message) ? error_message : nil} %>
+      <%= erb :'admin/forms/add_product', :locals => {:selected_product => selected_product, :error_message => defined?(error_message) ? error_message : nil, :data => defined?(data) ? data : nil } %>
   <% end %>
 
   <div class="clear"></div>

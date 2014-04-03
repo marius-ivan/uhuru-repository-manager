@@ -2,18 +2,28 @@
 <fieldset class="details">
   <legend>Mirror details</legend>
   <form method="post" action="<%= Uhuru::RepositoryManager::MIRRORS + '/' + mirror.name %>">
-    <div><label for="mirror_name">Mirror</label>              <input name="mirror_name" type="text" id="mirror_name" value="<%= mirror.name %>"></div>
-    <div><label for="hostname">Hostname</label>               <input name="hostname" type="text" id="hostname" value="<%= mirror.hostname %>"></div>
+    <div><label for="mirror_name">Mirror</label>              <input name="mirror_name" type="text" id="mirror_name" value="<%= defined?(data[:name]) ? data[:name] : mirror.name %>"></div>
+    <div><label for="hostname">Hostname</label>               <input name="hostname" type="text" id="hostname" value="<%= defined?(data[:endpoint]) ? data[:endpoint] : mirror.hostname %>"></div>
     <div><label for="status">Status</label>
       <select name="status" id="status">
-        <option value="true" <%= mirror.status ? 'selected' : '' %>>Online</option>
-        <option value="false" <%= !mirror.status ? 'selected' : '' %>>Offline</option>
+
+        <% if defined?(data[:status]) %>
+            <% if data[:status] == true || data[:status] == 'true' %>
+                <option value="true">Online</option>
+            <% else %>
+                <option value="false">Offline</option>
+            <% end %>
+        <% else %>
+            <option value="true" <%= mirror.status ? 'selected' : '' %>>Online</option>
+            <option value="false" <%= !mirror.status ? 'selected' : '' %>>Offline</option>
+        <% end %>
+
       </select>
     </div>
 
     <div>
       <label for="description">Description</label>
-      <textarea name="description" id="description"><%= mirror.description %></textarea>
+      <textarea name="description" id="description"><%= defined?(data[:description]) ? data[:description] : mirror.description %></textarea>
     </div>
 
     <div class="clear-height-10px"></div>

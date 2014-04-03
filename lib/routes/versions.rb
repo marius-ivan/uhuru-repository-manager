@@ -156,6 +156,7 @@ module Uhuru
             Uhuru::RepositoryManager::Model::Versions.update(version, hash)
           rescue Exception => ex
             error_message = Uhuru::RepositoryManager::Error.new('Edit version: ', ex.message)
+            data = hash
             $logger.error("Edit version : #{ex.message} - #{ex.backtrace}")
           end
 
@@ -170,6 +171,7 @@ module Uhuru
             var :products, products
             var :selected_product, selected_product
             var :selected_version, selected_version
+            var :data, data || nil
             var :error_message, error_message || nil
             var :available_versions, available_versions
             var :dependencies, []
@@ -194,6 +196,7 @@ module Uhuru
             session[:upload_state_blob_id] = Uhuru::RepositoryManager::Model::Versions.create(product.id, params[:version_name], params[:type], params[:description], path)
           rescue Exception => ex
             error_message = Uhuru::RepositoryManager::Error.new('Add version: ', ex.message)
+            data = { :name => params[:version_name], :type => params[:type], :description => params[:description] }
             $logger.error("Add version : #{ex.message} - #{ex.backtrace}")
           end
 
@@ -206,6 +209,7 @@ module Uhuru
             var :products, products
             var :selected_product, selected_product
             var :selected_version, nil
+            var :data, data || nil
             var :error_message, error_message || nil
             var :new_version, :new_version
           end
@@ -228,6 +232,7 @@ module Uhuru
             session[:upload_state_blob_id] = Uhuru::RepositoryManager::Model::Versions.create(product.id, params[:version_name], params[:type], params[:description], path)
           rescue Exception => ex
             error_message = Uhuru::RepositoryManager::Error.new('Add version: ', ex.message)
+            data = { :name => params[:version_name], :type => params[:type], :description => params[:description] }
             $logger.error("Add version via sftp : #{ex.message} - #{ex.backtrace}")
           end
 
@@ -240,6 +245,7 @@ module Uhuru
             var :products, products
             var :selected_product, selected_product
             var :selected_version, nil
+            var :data. data || nil
             var :error_message, error_message || nil
             var :new_version, :new_version
           end

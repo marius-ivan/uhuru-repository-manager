@@ -88,6 +88,7 @@ module Uhuru
             Uhuru::RepositoryManager::Model::Products.update(product, hash)
           rescue Exception => ex
             error_message = Uhuru::RepositoryManager::Error.new('Edit product: ', ex.message)
+            data = hash
             $logger.error("Edit product : #{ex.message} - #{ex.backtrace}")
           end
 
@@ -99,6 +100,7 @@ module Uhuru
             var :products, products
             var :versions, versions
             var :selected_product, product.id
+            var :data, data || nil
             var :error_message, error_message || nil
           end
         end
@@ -117,6 +119,7 @@ module Uhuru
             Uhuru::RepositoryManager::Model::Products.create(params[:product_name], params[:type], params[:label], params[:description])
           rescue Exception => ex
             error_message = Uhuru::RepositoryManager::Error.new('Create product: ', ex.message)
+            data = { :name => params[:product_name], :type => params[:type], :label => params[:label], :description => params[:description] }
             $logger.error("Create product : #{ex.message} - #{ex.backtrace}")
           end
 
@@ -126,6 +129,7 @@ module Uhuru
             layout :'layouts/layout'
             var :products, products
             var :selected_product, nil
+            var :data, data || nil
             var :error_message, error_message || nil
             var :new_product, :new_product
           end
