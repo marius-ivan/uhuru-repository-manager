@@ -265,7 +265,6 @@ module Uhuru
           session[:logged_in?] = nil
           redirect INDEX
         end
-
       end
     end
   end

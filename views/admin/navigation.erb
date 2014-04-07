@@ -7,5 +7,5 @@
     <li><a href="<%= Uhuru::RepositoryManager::USERS %>" class="<%= request.path_info.start_with?(Uhuru::RepositoryManager::USERS) ? 'selected' : ''  %>">Users</a></li>
     <li><a href="<%= Uhuru::RepositoryManager::ACCESS %>" class="<%= request.path_info.start_with?(Uhuru::RepositoryManager::ACCESS) ? 'selected' : ''  %>">Access</a></li>
     <li><a href="<%= Uhuru::RepositoryManager::ADMIN_KEYS %>" class="<%= request.path_info.start_with?(Uhuru::RepositoryManager::ADMIN_KEYS) ? 'selected' : ''  %>">Keys</a></li>
-    <li class="right"><a href="<%= Uhuru::RepositoryManager::ADMIN_ACCOUNT_SETTINGS %>" class="<%= request.path_info.start_with?(Uhuru::RepositoryManager::ADMIN_ACCOUNT_SETTINGS) ? 'selected' : ''  %>">Account Settings</a></li>
+    <li class="right"><a href="<%= Uhuru::RepositoryManager::ACCOUNT_SETTINGS %>" class="<%= request.path_info.start_with?(Uhuru::RepositoryManager::ACCOUNT_SETTINGS) ? 'selected' : ''  %>">Account Settings</a></li>
 </ul>

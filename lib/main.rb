@@ -24,6 +24,7 @@ require '../lib/routes/versions'
 require '../lib/routes/mirrors'
 require '../lib/routes/users'
 require '../lib/routes/access'
+require '../lib/routes/account_settings'
 
 require "create_tables"
 require "filesystem_handler"
@@ -74,6 +75,7 @@ module Uhuru::RepositoryManager
     register Uhuru::RepositoryManager::Mirrors
     register Uhuru::RepositoryManager::Users
     register Uhuru::RepositoryManager::Access
+    register Uhuru::RepositoryManager::AccountSettings
 
     $logger = Logger.new($config[:logging][:file])
     $logger.level = Logger::WARN

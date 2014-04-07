@@ -19,13 +19,13 @@ module Uhuru
       EMAIL_SENT                = "#{INDEX}email_sent"
       PASSWORD_RESET            = "#{INDEX}password_reset/:token"
       LOGOUT                    = "#{INDEX}logout"
+      ACCOUNT_SETTINGS          = "#{INDEX}account_settings"
 
       USER_HOWTO                = "#{INDEX}howto"
       USER_DASHBOARD            = "#{INDEX}user_dashboard"
       USER_KEYS                 = "#{INDEX}keys"
       USER_ADD_KEY              = "#{INDEX}add_key"
       USER_DELETE_KEY           = "#{INDEX}delete_key"
-      USER_ACCOUNT_SETTINGS     = "#{INDEX}account_settings"
 
       DASHBOARD                 = "#{INDEX}dashboard"
       PRODUCTS                  = "#{INDEX}products"
@@ -36,7 +36,6 @@ module Uhuru
       ADMIN_KEYS                = "#{INDEX}admin_keys"
       ADMIN_ADD_KEY             = "#{INDEX}admin_add_key"
       ADMIN_DELETE_KEY          = "#{INDEX}admin_delete_key"
-      ADMIN_ACCOUNT_SETTINGS    = "#{INDEX}admin_account_settings"
 
       #
       #  sections and forms
